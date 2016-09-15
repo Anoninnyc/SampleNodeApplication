@@ -93,6 +93,16 @@ p{
 	margin:0;
 }
 
+/* Section Styles
+---------------------------------*/
+#work, #about, #team, #adminPages,
+#portfolio, #pricing, #contact, #location, #otherPages, #loginPage, #disclaimer, #registerPage  {
+    padding-top: 100px;
+    padding-bottom: 100px;
+    min-height:900px;
+}
+
+
 /* Header Styles
 ---------------------------------*/
 
