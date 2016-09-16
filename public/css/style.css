@@ -95,11 +95,11 @@ p{
 
 /* Section Styles
 ---------------------------------*/
-#work, #about, #team, #adminPages,
-#portfolio, #pricing, #contact, #location, #otherPages, #loginPage, #disclaimer, #registerPage  {
+#work, #about, #team, #adminPages, #reviews,
+#portfolio, #pricing, #contact  {
     padding-top: 100px;
     padding-bottom: 100px;
-    min-height:900px;
+    min-height:950px;
 }
 
 
@@ -392,6 +392,7 @@ color: #fff;
 
 /* Portfolio
 ---------------------------------*/
+
 .Portfolio-nav{
 	padding:0;
 	margin:0 0 45px 0;
@@ -568,8 +569,31 @@ border: 2px solid #fff;
 }
 
 
+/* Slider Stuff
+---------------------------------*/
+.slider4 .slide  {
+	min-height: 550px;
+	width: 320px !important;;
+}
+
+
+.slide  {
+	background-color: grey;
+	border-radius: 5%;
+	min-height: 150px;
+}
+/* Slider Stuff End
+---------------------------------*/
+
 /* Team
 ---------------------------------*/
+#team{
+	background:url(../img/section-bg3.jpg) center center no-repeat;
+	background-size:cover;
+	padding:55px 0;
+	text-align:center;
+}
+
 .team-leader-block{
 	max-width:993px;
 	margin:0 auto;
@@ -583,9 +607,20 @@ border: 2px solid #fff;
 	float: left;
 }
 .team-leader-box span{
-	margin-bottom:24px;
+	color:#fff;
+	margin-bottom:14px;
 	display:block;
 }
+
+.team-leader-box p{
+	color:#fff;
+	text-shadow: 2px 2px #000000;
+}
+.team-leader-box h3{
+	color:#fff;
+	text-shadow: 2px 2px #000000;
+}
+
 .team-leader-box:nth-of-type(3n+0){ margin:0;}
 .team-leader{
 	width:auto;
