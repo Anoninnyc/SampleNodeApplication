@@ -14,6 +14,10 @@ module.exports = function(app, passport) {
         });
     });
 
+    // app.get('/frontEndProfile', function(req, res) {
+    //  console.log("You're trying to get in!!");
+    // });
+
     // LOGOUT ==============================
     app.get('/logout', function(req, res) {
         res.redirect('/');
