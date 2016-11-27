@@ -1,3 +1,6 @@
+var path = require('path');
+
+
 module.exports = function(app, passport) {
 
 // normal routes ===============================================================
@@ -14,9 +17,10 @@ module.exports = function(app, passport) {
         });
     });
 
-    // app.get('/frontEndProfile', function(req, res) {
-    //  console.log("You're trying to get in!!");
-    // });
+    app.get('/frontEndProfile', function(req, res) {
+        console.log("pathhh", path.join(__dirname,'../','index.ejs'));
+        res.sendfile(path.join(__dirname,'../','index.html'));
+    });
 
     // LOGOUT ==============================
     app.get('/logout', function(req, res) {
@@ -50,7 +54,7 @@ module.exports = function(app, passport) {
 
         // process the signup form
         app.post('/signup', passport.authenticate('local-signup', {
-            successRedirect : '/profile', // redirect to the secure profile section
+            successRedirect : '/frontEndProfile', // redirect to the secure profile section
             failureRedirect : '/signup', // redirect back to the signup page if there is an error
             failureFlash : true // allow flash messages
         }));
