@@ -17,13 +17,15 @@ module.exports = function(app, passport) {
         });
     });
 
-    app.get('/frontEndProfile', function(req, res) {
+    app.get('/frontEndProfile', isLoggedIn, function(req, res) {
         console.log("pathhh", path.join(__dirname,'../','index.ejs'));
-        res.sendfile(path.join(__dirname,'../','index.html'));
+        res.sendfile(path.join(__dirname,'../FrontEnd/Public/','index.html'));
     });
 
     // LOGOUT ==============================
     app.get('/logout', function(req, res) {
+        req.logout();
+        console.log("trying to logout!");
         res.redirect('/');
     });
 
@@ -41,7 +43,7 @@ module.exports = function(app, passport) {
 
         // process the login form
         app.post('/login', passport.authenticate('local-login', {
-            successRedirect : '/profile', // redirect to the secure profile section
+            successRedirect : '/frontEndProfile', // redirect to the secure profile section
             failureRedirect : '/login', // redirect back to the signup page if there is an error
             failureFlash : true // allow flash messages
         }));
@@ -191,11 +193,16 @@ module.exports = function(app, passport) {
         });
     });
 
+    app.get('*',function(req, res) {
+      //res.redirect('/frontEndProfile');
+      res.sendfile(path.join(__dirname,'../FrontEnd/Public/','index.html'));
+    })
 
 };
 
 // route middleware to ensure user is logged in
 function isLoggedIn(req, res, next) {
+    console.log("isLoggedIn Answer", req.isAuthenticated());
     if (req.isAuthenticated())
         return next();
 

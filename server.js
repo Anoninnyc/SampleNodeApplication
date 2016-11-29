@@ -22,9 +22,10 @@ mongoose.connect(configDB.url); // connect to our database
 require('./config/passport')(passport); // pass passport for configuration
 //
 
-//
 app.use(express.static(__dirname + '/public'));
+
 //
+
 
 // set up our express application
 app.use(morgan('dev')); // log every request to the console
@@ -39,6 +40,9 @@ app.use(session({ secret: 'ilovescotchscotchyscotchscotch' })); // session secre
 app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
 app.use(flash()); // use connect-flash for flash messages stored in session
+
+console.log(__dirname + '/FrontEnd');
+// app.use(express.static(__dirname + '/FrontEnd'));
 
 // routes ======================================================================
 require('./app/routes.js')(app, passport); // load our routes and pass in our app and fully configured passport
