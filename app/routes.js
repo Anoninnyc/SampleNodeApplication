@@ -18,14 +18,13 @@ module.exports = function(app, passport) {
     });
 
     app.get('/frontEndProfile', isLoggedIn, function(req, res) {
-        console.log("pathhh", path.join(__dirname,'../','index.ejs'));
         res.sendfile(path.join(__dirname,'../FrontEnd/Public/','index.html'));
     });
 
     // LOGOUT ==============================
     app.get('/logout', function(req, res) {
         req.logout();
-        console.log("trying to logout!");
+        console.log("Trying to logout!");
         res.redirect('/');
     });
 
@@ -203,8 +202,9 @@ module.exports = function(app, passport) {
 // route middleware to ensure user is logged in
 function isLoggedIn(req, res, next) {
     console.log("isLoggedIn Answer", req.isAuthenticated());
-    if (req.isAuthenticated())
-        return next();
+    if (req.isAuthenticated()){
+      return next();
+    }
 
     res.redirect('/');
 }

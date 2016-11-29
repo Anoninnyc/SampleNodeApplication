@@ -91,16 +91,12 @@
 /* 2 */
 /***/ function(module, exports) {
 
+	
 	myApp.controller('myCtrl', function($scope, $location) {
 	  console.log("running myCtrl");
 
-	  $scope.logout = () => {
-	    $.get('/logout', function(res, err){
-	      console.log("controller trying to log out!");
-	      $location.path("/");
-	      $scope.$apply();
-	    })
-	  }
+	  $scope.test = "Click me to go to another page!";
+	  
 
 	});
 
