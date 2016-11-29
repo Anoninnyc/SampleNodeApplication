@@ -45,13 +45,8 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	myApp = angular.module('myApp', ['ui.router', 'ngSanitize'])
-
 	__webpack_require__(1);
-
-
 	__webpack_require__(2);
-	// require('./source/directives/directives.js');
-	// require('./source/services/services.js');
 
 
 /***/ },
@@ -72,11 +67,12 @@
 	    url: '/otherPage',
 	    templateUrl: '/frontendviews/otherPage.html',
 	    controller: 'myCtrl'
-	  }).
+	  })
+	  .
 	  state('logout',{
-	    url: '/logout',
-	    templateUrl: '/frontendviews/home.html',
-	    controller: 'myCtrl'
+	    url: '/logout'
+	  //   templateUrl: '/frontendviews/home.html',
+	  //   controller: 'myCtrl'
 	  });
 
 	  $locationProvider.html5Mode({
@@ -91,13 +87,9 @@
 /* 2 */
 /***/ function(module, exports) {
 
-	
 	myApp.controller('myCtrl', function($scope, $location) {
 	  console.log("running myCtrl");
-
 	  $scope.test = "Click me to go to another page!";
-	  
-
 	});
 
 

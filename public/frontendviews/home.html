@@ -16,8 +16,7 @@
     <div class="page-header text-center">
         <h1><span class="fa fa-anchor"></span> Profile Page</h1>
         <a ui-sref="otherPage" class="btn btn-info">{{test}}</a>
-
-        <a ng-href="/logout" onClick="history.go(0)" class="btn btn-default btn-sm">Logout</a>
+        <a href="/logout" onClick="history.go(0)" class="btn btn-default btn-sm">Logout</a>
     </div>
 
     <div class="row">
@@ -25,7 +24,7 @@
         <!-- LOCAL INFORMATION -->
         <div class="col-sm-6">
             <div class="well">
-                <h3 ><span class="fa fa-user"></span> Local</h3>
+                <h3><span class="fa fa-user"></span> Local</h3>
 
                 <% if (user.local.email) { %>
                     <p>

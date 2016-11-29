@@ -12,11 +12,10 @@ myApp.config(function($stateProvider, $locationProvider, $urlRouterProvider) {
     url: '/otherPage',
     templateUrl: '/frontendviews/otherPage.html',
     controller: 'myCtrl'
-  }).
+  })
+  .
   state('logout',{
-    url: '/logout',
-    templateUrl: '/frontendviews/home.html',
-    controller: 'myCtrl'
+    url: '/logout'
   });
 
   $locationProvider.html5Mode({

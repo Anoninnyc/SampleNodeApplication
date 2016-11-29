@@ -191,9 +191,9 @@ module.exports = function(app, passport) {
             res.redirect('/profile');
         });
     });
-
-    app.get('*',function(req, res) {
-      //res.redirect('/frontEndProfile');
+ 
+    app.get('*', isLoggedIn,function(req, res) {
+      console.log("YOU GOT WILDcard!");
       res.sendfile(path.join(__dirname,'../FrontEnd/Public/','index.html'));
     })
 
@@ -208,3 +208,6 @@ function isLoggedIn(req, res, next) {
 
     res.redirect('/');
 }
+
+
+
