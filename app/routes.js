@@ -1,9 +1,11 @@
 var path = require('path');
+var user = require('./models/user');
 
 
 module.exports = function(app, passport) {
 
 // normal routes ===============================================================
+
 
     // show the home page (will also have our login links)
     app.get('/', function(req, res) {
@@ -18,6 +20,7 @@ module.exports = function(app, passport) {
     });
 
     app.get('/frontEndProfile', isLoggedIn, function(req, res) {
+        console.log("this is req.user", req.user);
         res.sendfile(path.join(__dirname,'../FrontEnd/Public/','index.html'));
     });
 
@@ -26,6 +29,17 @@ module.exports = function(app, passport) {
         req.logout();
         console.log("Trying to logout!");
         res.redirect('/');
+    });
+
+    // UserInfo ==============================
+
+    app.post('/userInfo', function(req, res) {
+            console.log("here is the user info!", req.session, "hers req.user.local.email \n", req.user.local.email);
+
+         user.findOne({"local.email":req.user.local.email},function(err, doc){
+            console.log(err, doc);
+            res.send([doc._id, req.user.local.email, req.user.local.password]);
+         })
     });
 
 // =============================================================================
@@ -201,7 +215,7 @@ module.exports = function(app, passport) {
 
 // route middleware to ensure user is logged in
 function isLoggedIn(req, res, next) {
-    console.log("isLoggedIn Answer", req.isAuthenticated());
+    console.log("isLoggedIn Answer", req.isAuthenticated(), req.session, req.user);
     if (req.isAuthenticated()){
       return next();
     }
