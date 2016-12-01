@@ -36,7 +36,7 @@ module.exports = function(app, passport) {
     app.post('/userInfo', function(req, res) {
             console.log("here is the user info!", req.session, "hers req.user.local.email \n", req.user.local.email);
 
-         user.findOne({"local.email":req.user.local.email},function(err, doc){
+         user.findOne({"local.email":req.user.local.email}, function(err, doc){
             console.log(err, doc);
             res.send([doc._id, req.user.local.email, req.user.local.password]);
          })

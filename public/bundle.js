@@ -47,6 +47,7 @@
 	myApp = angular.module('myApp', ['ui.router', 'ngSanitize'])
 	__webpack_require__(1);
 	__webpack_require__(2);
+	__webpack_require__(3);
 
 
 /***/ },
@@ -85,25 +86,53 @@
 /* 2 */
 /***/ function(module, exports) {
 
-	myApp.controller('myCtrl', function($scope, $location, $http) {
-	  console.log("running myCtrl");
+	
+	myApp.controller('myCtrl', function($scope, $location, $http, authService) {
+	   const services = {
+	    authService,
+	   };
+	   Object.assign($scope,services);
+	   console.log("logout function", $scope.authService.logout)
+
 	  $scope.test = "Click me to go to another page!";
-	  $scope.id=window.localStorage.id;
-	  $scope.email=window.localStorage.email;
-	  $scope.password=window.localStorage.password;
+
+	   $scope.getAuth = key => {
+	  	return window.localStorage[key];
+	  }
 
 	  if (!window.localStorage.personalInfo){
-		  $http.post('/userInfo',{"test":"test"}).then(function(res,err){
-		  	console.log("client side err and res", res, err);
-		  	window.localStorage.personalInfo = "Received";
-		  	$scope.id = res.data[0];
-		  	$scope.email = res.data[1];
-		  	$scope.password = res.data[2];
-		  	console.log("Here is scope", $scope);
-		  });
+		  authService.login();
 	  }
+
 	});
 
+
+/***/ },
+/* 3 */
+/***/ function(module, exports) {
+
+	myApp.service('authService', function($http) {
+
+	  this.login = () => {
+	    $http.post('/userInfo',{"test":"test"}).then(function(res,err){
+	      console.log("client side err and res", res, err);
+	      window.localStorage.personalInfo = "Received";
+	      window.localStorage.id = res.data[0];
+	      window.localStorage.email = res.data[1];
+	      window.localStorage.password = res.data[2];
+	      console.log("this.id", this.id);
+	    });
+	  };
+
+	  this.logout = () => {
+	    window.localStorage.personalInfo = "";
+	    window.localStorage.id = "";
+	    window.localStorage.email = "";
+	    window.localStorage.password = "";
+	    window.history.go(0);
+	  }
+
+	});
 
 /***/ }
 /******/ ]);

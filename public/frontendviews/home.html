@@ -16,7 +16,7 @@
     <div class="page-header text-center">
         <h1><span class="fa fa-anchor"></span> Profile Page</h1>
         <a ui-sref="otherPage" class="btn btn-info">{{test}}</a>
-        <a href="/logout" onClick="history.go(0)" class="btn btn-default btn-sm">Logout</a>
+        <a  ng-click="authService.logout()" href="/logout" class="btn btn-default btn-sm">Logout</a>
     </div>
 
     <div class="row">
@@ -27,9 +27,9 @@
                 <h3><span class="fa fa-user"></span> Local</h3>
                 
                     <p>
-                        <strong>id</strong>: {{id}}<br>
-                        <strong>email</strong>: {{email}}<br>
-                        <strong>password</strong>: {{password}}
+                        <strong>id</strong>: {{getAuth('id')}}<br>
+                        <strong>email</strong>: {{getAuth('email')}}<br>
+                        <strong>password</strong>: {{getAuth('password')}}
                     </p>
                     
                     <a href="/unlink/local" class="btn btn-default">Unlink</a>
