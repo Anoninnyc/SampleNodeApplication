@@ -4,7 +4,6 @@ myApp.controller('myCtrl', function($scope, $location, $http, authService) {
     authService,
    };
    Object.assign($scope,services);
-   console.log("logout function", $scope.authService.logout)
 
   $scope.test = "Click me to go to another page!";
 

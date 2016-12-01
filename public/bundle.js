@@ -92,7 +92,6 @@
 	    authService,
 	   };
 	   Object.assign($scope,services);
-	   console.log("logout function", $scope.authService.logout)
 
 	  $scope.test = "Click me to go to another page!";
 
@@ -120,7 +119,6 @@
 	      window.localStorage.id = res.data[0];
 	      window.localStorage.email = res.data[1];
 	      window.localStorage.password = res.data[2];
-	      console.log("this.id", this.id);
 	    });
 	  };
 

@@ -7,7 +7,6 @@ myApp.service('authService', function($http) {
       window.localStorage.id = res.data[0];
       window.localStorage.email = res.data[1];
       window.localStorage.password = res.data[2];
-      console.log("this.id", this.id);
     });
   };
 
