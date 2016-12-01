@@ -2,7 +2,6 @@ myApp.service('authService', function($http) {
 
   this.login = () => {
     $http.post('/userInfo',{"test":"test"}).then(function(res,err){
-      console.log("client side err and res", res, err);
       window.localStorage.personalInfo = "Received";
       window.localStorage.id = res.data[0];
       window.localStorage.email = res.data[1];
